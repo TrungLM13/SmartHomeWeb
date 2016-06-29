@@ -1,17 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="Entity.DeviceInfo"%>
+<%@ page import="Controller.DeviceManager" %>
+<%@ page import="java.util.List"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.Map"%>
+<%@ page import="java.util.Set"%>
+<%@ page import="java.util.Iterator"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link href="bootstrap\css\customer.css" rel="stylesheet">
 <title>Power consumption</title>
 <jsp:include page="header.jsp"></jsp:include>
-<style>
-body {
-	position: relative;
-}
-</style>
 <head>
 <script type="text/javascript" src="bootstrap\js\bootstrap.min.js"></script>
 <script type="text/javascript" src="bootstrap\js\bootstrap.js"></script>
@@ -28,24 +28,21 @@ body {
 	google.charts.setOnLoadCallback(drawChart);
 
 	function drawChart() {
-		// Get List Device type from database
-		var deviceType = [ "Light", "Fridge", "Air Conditioner",
-				"Washing Machine", "TV" ];
-
-		//Get Power Consumption of device by Type
-		var powerConsumption = [ 3, 1, 1, 1, 2 ];
-
 		var data = new google.visualization.DataTable();
 		data.addColumn('string', 'Topping');
 		data.addColumn('number', 'Slices');
 
-		for (var i = 0; i < deviceType.length; ++i) {
-			var device = {
-				deviceType : deviceType[i],
-				powerConsumption : powerConsumption[i]
-			};
-			data.addRows([ [ device.deviceType, device.powerConsumption ] ]);
-		}
+		<%
+			DeviceManager deviceManager = new DeviceManager();
+			deviceManager.GetPowerConsumptionByDeviceType();
+		    Map<String, Double> u = deviceManager.powerConsumptionByDeviceType;	
+			Set keys = u.keySet();
+			for (Iterator i = keys.iterator(); i.hasNext();) {
+				 String key = (String) i.next();
+			     Double value = (Double) u.get(key);
+		%>
+			data.addRows([ [" <%=key%>" , <%=value%>] ]);
+		<%}%>
 		var piechart_options = {
 			title : 'Power Consumption By Device Type',
 			width : 500,
@@ -55,23 +52,21 @@ body {
 				.getElementById('piechart_div'));
 		piechart.draw(data, piechart_options);
 
-		//Column Chart
-		var Month = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug",
-				"Sep", "Oct", "Nov", "Dec" ];
-
-		var powerConsumptionByMonth = [ 10, 12, 14, 22, 20, 16, 30, 25, 27, 60,
-				14, 10 ];
 		
+		//Column Chart
 		var dataBarChart = new google.visualization.DataTable();
 		dataBarChart.addColumn('string', 'Month');
 		dataBarChart.addColumn('number', 'Power Consumption');
-		for (var i = 0; i < Month.length; ++i) {
-			var device = {
-				deviceType : Month[i],
-				powerConsumption : powerConsumptionByMonth[i]
-			};
-			dataBarChart.addRows([ [ device.deviceType, device.powerConsumption ] ]);
-		}
+		<%
+		deviceManager.GetSumPowerConsumptionPerMonth("2016");
+	    u = deviceManager.powerConsumptionPerMonth;	
+		keys = u.keySet();
+		for (Iterator i = keys.iterator(); i.hasNext();) {
+			 String key = (String) i.next();
+		     Double value = (Double) u.get(key);
+	%>
+		dataBarChart.addRows([ [" <%=key%>" , <%=value%>] ]);
+		<%}%>
 		
 		var barchart_options = {
 				title : 'Power Consumption of All Device',
@@ -87,26 +82,27 @@ body {
 
 		//Line Chart
 		var data = new google.visualization.DataTable();
-		data.addColumn('string', 'Date');
+		data.addColumn('string', 'Day');
 		data.addColumn('number', 'Line');
 		data.addColumn('number', 'good');
 		data.addColumn('number', 'bad');
-		data.addRows([ [ '1', 10, 10, null ], [ '2', 16, 16, null ],
-				[ '3', 13, 13, null ], [ '4', 17, null, 17 ],
-				[ '5', 3, 3, null ], [ '6', 6, 6, null ],
-				[ '7', 12, 12, null ], [ '8', 18, 18, null ],
-				[ '9', 9, 9, null ], [ '10', 20, 20, null ],
-				[ '11', 12, 12, null ], [ '12', 8, 8, null ],
-				[ '13', 15, 15, null ], [ '14', 15, 15, null ],
-				[ '15', 21, 21, null ], [ '16', 11, 11, null ],
-				[ '17', 14, 14, null ], [ '18', 12, 12, null ],
-				[ '19', 18, 18, null ], [ '20', 13, 13, null ],
-				[ '21', 16, 16, null ], [ '22', 23, 23, null ],
-				[ '23', 19, 19, null ], [ '24', 15, 15, null ],
-				[ '25', 20, 20, null ], [ '26', 19, 19, null ],
-				[ '27', 0, 0, null ], [ '28', 0, 0, null ],
-				[ '29', 0, 0, null ], [ '30', 0, 0, null ] ]);
-
+		<%
+		deviceManager.GetSumPowerConsumptionPerDay("Light", "1", "2016");
+	    u = deviceManager.powerConsumptionPerDay;	
+		keys = u.keySet();
+		for (Iterator i = keys.iterator(); i.hasNext();) {
+			 String key = (String) i.next();
+		     Double value = (Double) u.get(key);
+		     
+		     if(value > 20){
+		%>
+		data.addRows([ [" <%=key%>" , <%=value%>, null, <%=value%>] ]);
+				<%}
+				     else {%> 
+				     data.addRows([ [" <%=key%>" , <%=value%>, <%=value%>, null] ]);
+				<%}%>
+		<%}%>
+		
 		var options = {
 			title : 'Power Consumption by day',
 			pointSize : 5,
@@ -141,6 +137,7 @@ body {
 		</div>
 	</div>
 
+	<br>
 	<br>
 	<div class="col-md-6 col-md-offset-3">
 		<form class="form-inline" role="form">

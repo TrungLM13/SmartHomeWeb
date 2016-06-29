@@ -46,6 +46,13 @@ public class DeviceInfo {
 	public void setLocation(String location) {
 		Location = location;
 	}
+	public String getDeviceType() {
+		return DeviceType;
+	}
+	public void setDeviceType(String deviceType) {
+		DeviceType = deviceType;
+	}
+	
 	public DeviceInfo(String deviceId, String deviceName, float powerConsumption, String dateTime, String location, String deviceType, String status)
 	{
 		DeviceId = deviceId;
@@ -55,12 +62,6 @@ public class DeviceInfo {
 		Location = location;
 		DeviceType = deviceType;
 		Status = status;
-	}
-	public String getDeviceType() {
-		return DeviceType;
-	}
-	public void setDeviceType(String deviceType) {
-		DeviceType = deviceType;
 	}
 	
 
