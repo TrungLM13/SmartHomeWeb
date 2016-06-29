@@ -1,0 +1,17 @@
+.badge {
+	background: red;
+	position: absolute;
+	top: 0px;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.vleft{
+	 display: inline-block;
+    vertical-align: left;
+    float: none;
+}
