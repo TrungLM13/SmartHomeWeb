@@ -20,14 +20,33 @@
 		<div class="navbar-header">
 			<a class="navbar-brand" href="index.jsp">Smart Energy</a>
 		</div>
+		<%String uri = request.getRequestURI();
+
+		String pageName = uri.substring(uri.lastIndexOf("/")+1); 
+		if(pageName.equalsIgnoreCase("index.jsp")) {%>
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="index.jsp">Home</a></li>
 			<li><a href="DeviceManager.jsp">Device Manager</a></li>
 			<li><a href="Chart.jsp">Power Consumption</a></li>
 		</ul>
+		<%} %>
+		
+		<% if(pageName.equalsIgnoreCase("DeviceManager.jsp")) {%>
+		<ul class="nav navbar-nav">
+			<li><a href="index.jsp">Home</a></li>
+			<li class="active"><a href="DeviceManager.jsp">Device Manager</a></li>
+			<li><a href="Chart.jsp">Power Consumption</a></li>
+		</ul>
+		<%} %>
+		
+		<% if(pageName.equalsIgnoreCase("PowerConsumption.jsp")) {%>
+		<ul class="nav navbar-nav">
+			<li><a href="index.jsp">Home</a></li>
+			<li><a href="DeviceManager.jsp">Device Manager</a></li>
+			<li class="active"><a href="Chart.jsp">Power Consumption</a></li>
+		</ul>
+		<%} %>
 		<ul class="nav navbar-nav navbar-right">
-			<!-- <li><a href="#"> <span class="glyphicon glyphicon-bell"></span>
-			</a></li> -->
 			<li><a href="#">
 					<div class="notification-icon">
 						<span class="glyphicon glyphicon-bell" style="font-size:18px;"></span> 

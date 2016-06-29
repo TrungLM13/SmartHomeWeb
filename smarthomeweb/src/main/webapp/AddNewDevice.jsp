@@ -17,38 +17,28 @@
 	<div class="tab-content">
 		<div id="view" class="tab-pane fade"></div>
 		<div id=" Add New Device" class="tab-pane fade in active">
-			<h3>New Device Infomation</h3>
-			<form class="form-inline" role="form">
-
-				<div class="form-group">
-					<label class="control-label">Device Name:</label>
-					<div class="controls">
-						<input type="text" name="devicename" class="span3">
+		
+			<div class="col-md-6 col-md-offset-3">
+			<h4>New Device Infomation</h4>
+				<form role="form">
+					<div class="form-group">
+						<label for="devicename">Device Name:</label> <input type="text"
+							class="form-control" id="pwd">
 					</div>
-				</div>
-
-				<div class="dropdown">
-					<button class="btn btn-default dropdown-toggle" type="button"
-						id="menu1" data-toggle="dropdown">
-						Location <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-						<li role="presentation"><a role="menuitem" tabindex="-1"
-							href="#">Living room</a></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1"
-							href="#">Bed Room</a></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1"
-							href="#">Kitchen</a></li>
-						<li role="presentation" class="divider"></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1"
-							href="#">Others</a></li>
-					</ul>
-				</div>
-				<fieldset>
-					<a href="index.jsp" class="btn btn-success" type="submit">Add
-						New Device</a>
-				</fieldset>
-			</form>
+					<div class="form-group">
+						<label for="year">Location:</label> <select class="form-control">
+							<option value="1">Living</option>
+							<option value="2">Bed Room</option>
+							<option value="3">Kitchen</option>
+							<option value="4">Others</option>
+						</select>
+					</div>
+					<div>
+						<a href="index.jsp" class="btn btn-success" type="submit">Add
+							New Device</a>
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
 

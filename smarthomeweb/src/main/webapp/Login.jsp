@@ -21,8 +21,9 @@
 				<div class="checkbox">
 					<label><input type="checkbox"> Remember me</label>
 				</div>
-				<button type="submit" class="btn btn-default">Submit</button>
-			</form>
+				<div>
+					<a href="index.jsp" class="btn btn-success" type="submit">Login</a>
+				</div>			</form>
 		</div>
 	</div>
 </body>
