@@ -22,15 +22,6 @@
 		<div id="view" class="tab-pane fade in active">
 			<p>
 			<%
- 		ArrayList<DeviceInfo> goodDeviceList 	= new ArrayList<DeviceInfo>();
-		ArrayList<DeviceInfo> badDeviceList 	= new ArrayList<DeviceInfo>();
- 		for (DeviceInfo deviceInfo : DeviceManager.deviceListCpy) {
- 			if(deviceInfo.getStatus().equals("good") || deviceInfo.getStatus().equals("Good") || deviceInfo.getStatus().equals("Best"))
- 				goodDeviceList.add(deviceInfo);
- 			else
- 				badDeviceList.add(deviceInfo);
- 		}
-
  			%>
 		 	<!-- List Of Device -->
 		 	<div class="container">
@@ -41,31 +32,22 @@
 		 					<th>Device ID</th>
 		 					<th>Device Name</th>
 		 					<th>Location</th>
-		 					<th>Status</th>
+		 					<th>TimeConsumsion</th>
+		 					<th>PowerConsumsion</th>
+		 					<th>Time Start</th>
 		 				</tr>
 		 			</thead>
 		 			<tbody>
 						<%
-							for (DeviceInfo u : goodDeviceList) {
+							for (DeviceInfo u : DeviceManager.deviceListCpy) {
 						%>
 						<tr class="success">
 							<td><%=u.getDeviceId()%></td>
 							<td><%=u.getDeviceName()%></td>
 		 					<td><%=u.getLocation()%></td>
-		 					<td><%=u.getStatus()%></td>
-		 				</tr>
-		 				<%
-		 					}
-		 				%>
-		 
-		 				<%
-		 					for (DeviceInfo u : badDeviceList) {
-		 				%>
-		 				<tr class="danger">
-		 					<td><%=u.getDeviceId()%></td>
-		 					<td><%=u.getDeviceName()%></td>
-		 					<td><%=u.getLocation()%></td>
-		 					<td><%=u.getStatus()%></td>
+		 					<td><%=u.getSpendTime()%></td>
+		 					<td><%=u.getPowerConsumption()%></td>
+		 					<td><%=u.getDateTime()%></td>
 		 				</tr>
 		 				<%
 		 					}

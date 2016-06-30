@@ -184,8 +184,8 @@
 		<div class="span10 vleft" id="chart_div"
 			style="width: 1450px; height: 500px;"></div>
 	</div>
-
 </body>
+<jsp:include page="footer.jsp"></jsp:include>
 
 <!-- Bootstrap core JavaScript
     ================================================== -->

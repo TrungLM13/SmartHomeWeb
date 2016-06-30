@@ -29,7 +29,7 @@
 			<li><a href="DeviceManager.jsp">Device Manager</a></li>
 			<li><a href="Chart.jsp">Power Consumption</a></li>
 		</ul>
-		<%}%>
+		<%} %>
 		
 		<% if(pageName.equalsIgnoreCase("DeviceManager.jsp")) {%>
 		<ul class="nav navbar-nav">
@@ -37,24 +37,15 @@
 			<li class="active"><a href="DeviceManager.jsp">Device Manager</a></li>
 			<li><a href="Chart.jsp">Power Consumption</a></li>
 		</ul>
-		<%}%>
+		<%} %>
 		
-		<% if(pageName.equalsIgnoreCase("Chart.jsp")) {%>
+		<% if(pageName.equalsIgnoreCase("PowerConsumption.jsp")) {%>
 		<ul class="nav navbar-nav">
 			<li><a href="index.jsp">Home</a></li>
 			<li><a href="DeviceManager.jsp">Device Manager</a></li>
 			<li class="active"><a href="Chart.jsp">Power Consumption</a></li>
 		</ul>
 		<%} %>
-		
-		<% if(pageName.equalsIgnoreCase("")) {%>
-		<ul class="nav navbar-nav">
-			<li class="active"><a href="index.jsp">Home</a></li>
-			<li><a href="DeviceManager.jsp">Device Manager</a></li>
-			<li><a href="Chart.jsp">Power Consumption</a></li>
-		</ul>
-		<%} %>
-		
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="#">
 					<div class="notification-icon">
