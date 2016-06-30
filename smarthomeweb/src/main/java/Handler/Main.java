@@ -23,17 +23,18 @@ public class Main {
         
         devicemng.GetListDevice();
         devicemng.GetPowerConsumptionByDeviceType();
+        devicemng.GetSumPowerConsumptionPerMonth("2016");
         
-        //Start Tomcat
-        Tomcat tomcat = new Tomcat();
-        if(port != null)
-        	tomcat.setPort(Integer.valueOf(8080));
-        else
-        	tomcat.setPort(Integer.valueOf(8080));
-        tomcat.getHost().setAppBase(appBase);
-        tomcat.addWebapp(contextPath, appBase);
-        tomcat.start();
-        tomcat.getServer().await();
+//        //Start Tomcat
+//        Tomcat tomcat = new Tomcat();
+//        if(port != null)
+//        	tomcat.setPort(Integer.valueOf(8080));
+//        else
+//        	tomcat.setPort(Integer.valueOf(8080));
+//        tomcat.getHost().setAppBase(appBase);
+//        tomcat.addWebapp(contextPath, appBase);
+//        tomcat.start();
+//        tomcat.getServer().await();
     }
 
 }

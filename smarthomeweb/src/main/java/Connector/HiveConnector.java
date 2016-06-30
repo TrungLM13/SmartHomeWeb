@@ -57,12 +57,4 @@ public class HiveConnector {
 	public static void setS_TableName(String s_TableName) {
 		HiveConnector.s_TableName = s_TableName;
 	}
-
-	private Connection getM_Con() {
-		return m_Con;
-	}
-
-	private void setM_Con(Connection m_Con) {
-		this.m_Con = m_Con;
-	}
 }
