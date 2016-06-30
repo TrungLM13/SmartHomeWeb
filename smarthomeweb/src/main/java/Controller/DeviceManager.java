@@ -15,7 +15,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
-import org.joda.time.LocalDate;
 
 import Connector.HiveConnector;
 import Connector.HiveProcedure;
@@ -39,36 +38,36 @@ public class DeviceManager {
 		powerConsumptionPerDay= new LinkedHashMap<String, Double>();
 		
 		// TODO Auto-generated constructor stub
-//		try{
-//			System.out.println("Start DeviceMng Service ...");
-//			m_conn 			= new HiveConnector();
-//			m_conn.CreateConnection();
-//			m_procedure   	= new HiveProcedure();
-//			m_procedure.sp_UseDataBase(m_conn);
-//			System.out.println("Done Start DeviceMng");
-//		}catch(Exception e){
-//			e.printStackTrace();
-//		}
+		try{
+			System.out.println("Start DeviceMng Service ...");
+			m_conn 			= new HiveConnector();
+			m_conn.CreateConnection();
+			m_procedure   	= new HiveProcedure();
+			m_procedure.sp_UseDataBase(m_conn);
+			System.out.println("Done Start DeviceMng");
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		
 		this.GetListDevice();
 		
 	}
 	
 	public List<DeviceInfo> GetListDevice(){
-		DeviceInfo device = new DeviceInfo("Device001", "Light", 10, "29/01/2015", "Living Room", "Light", "good");
-		DeviceInfo device1 = new DeviceInfo("Device002", "TV", 20, "29/03/2016", "Bed Room", "TV", "good");
-		DeviceInfo device2 = new DeviceInfo("Device003", "Air Conditioner", 10, "29/05/2016", "Living Room", "Air Conditioner", "bad");
-		DeviceInfo device3 = new DeviceInfo("Device004", "Washing Machine", 10, "29/06/2016", "Kitchen", "Washing Machine", "good");
-		DeviceInfo device4 = new DeviceInfo("Device005", "Fridge", 30, "29/06/2016", "Kitchen", "Fridge", "bad");
-	
-		deviceList.add(device);
-		deviceList.add(device1);
-		deviceList.add(device2);
-		deviceList.add(device3);
-		deviceList.add(device4);
+//		DeviceInfo device = new DeviceInfo("Device001", "Light", 10, "29/01/2015", "Living Room", "Light", "good");
+//		DeviceInfo device1 = new DeviceInfo("Device002", "TV", 20, "29/03/2016", "Bed Room", "TV", "good");
+//		DeviceInfo device2 = new DeviceInfo("Device003", "Air Conditioner", 10, "29/05/2016", "Living Room", "Air Conditioner", "bad");
+//		DeviceInfo device3 = new DeviceInfo("Device004", "Washing Machine", 10, "29/06/2016", "Kitchen", "Washing Machine", "good");
+//		DeviceInfo device4 = new DeviceInfo("Device005", "Fridge", 30, "29/06/2016", "Kitchen", "Fridge", "bad");
+//	
+//		deviceList.add(device);
+//		deviceList.add(device1);
+//		deviceList.add(device2);
+//		deviceList.add(device3);
+//		deviceList.add(device4);
 		
-		//deviceList 		= m_procedure.getListDeviceInfo(m_conn);
-		//deviceListCpy 	= m_procedure.getListDeviceInfo(m_conn);
+		deviceList 		= m_procedure.getListDeviceInfo(m_conn);
+		deviceListCpy 	= m_procedure.getListDeviceInfo(m_conn);
 		return deviceList;
 	}
 	
