@@ -1,53 +1,210 @@
+.panel-footer.panel-custom {
+    background: black;
+    color: white;
+}
+
 footer.nb-footer {
-background: #222;
-border-top: 4px solid #b78c33; }
+	background: #222;
+	border-top: 4px solid #b78c33;
+	height: 100px;
+}
+
 footer.nb-footer .about {
-margin: 0 auto;
-margin-top: 40px;
-max-width: 1170px;
-text-align: center; }
+	margin: 0 auto;
+	margin-top: 40px;
+	max-width: 1170px;
+	text-align: center;
+}
+
 footer.nb-footer .about p {
-font-size: 13px;
-color: #999;
-margin-top: 30px; }
+	font-size: 13px;
+	color: #999;
+	margin-top: 30px;
+}
+
 footer.nb-footer .about .social-media {
-margin-top: 15px; }
+	
+	margin-top: 15px;
+}
+
 footer.nb-footer .about .social-media ul li a {
-display: inline-block;
-width: 45px;
-height: 45px;
-line-height: 45px;
-border-radius: 50%;
-font-size: 16px;
-color: #b78c33;
-border: 1px solid rgba(255, 255, 255, 0.3); }
+	display: inline-block;
+	width: 45px;
+	height: 45px;
+	line-height: 45px;
+	border-radius: 50%;
+	font-size: 16px;
+	color: #b78c33;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
 footer.nb-footer .about .social-media ul li a:hover {
-background: #b78c33;
-color: #fff;
-border-color: #b78c33; }
+	background: #b78c33;
+	color: #fff;
+	border-color: #b78c33;
+}
+
 footer.nb-footer .footer-info-single {
-margin-top: 30px; }
+	margin-top: 30px;
+}
+
 footer.nb-footer .footer-info-single .title {
-color: #aaa;
-text-transform: uppercase;
-font-size: 16px;
-border-left: 4px solid #b78c33;
-padding-left: 5px; }
+	color: #aaa;
+	text-transform: uppercase;
+	font-size: 16px;
+	border-left: 4px solid #b78c33;
+	padding-left: 5px;
+}
+
 footer.nb-footer .footer-info-single ul li a {
-display: block;
-color: #aaa;
-padding: 2px 0; }
+	display: block;
+	color: #aaa;
+	padding: 2px 0;
+}
+
 footer.nb-footer .footer-info-single ul li a:hover {
-color: #b78c33; }
+	color: #b78c33;
+}
+
 footer.nb-footer .footer-info-single p {
-font-size: 13px;
-line-height: 20px;
-color: #aaa; }
+	font-size: 13px;
+	line-height: 20px;
+	color: #aaa;
+}
+
 footer.nb-footer .copyright {
-margin-top: 15px;
-background: #111;
-padding: 7px 0;
-color: #999; }
+	margin-top: 15px;
+	background: #111;
+	padding: 7px 0;
+	color: #999;
+}
+
 footer.nb-footer .copyright p {
-margin: 0;
-padding: 0; }
+	margin: 0;
+	padding: 0;
+}
+
+.social {
+    margin: 0;
+    padding: 0;
+}
+
+.social ul {
+    margin: 0;
+    padding: 5px;
+}
+
+.social ul li {
+    margin: 5px;
+    list-style: none outside none;
+    display: inline-block;
+}
+
+.social i {
+    width: 40px;
+    height: 40px;
+    color: #FFF;
+    background-color: #909AA0;
+    font-size: 22px;
+    text-align:center;
+    padding-top: 12px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -o-border-radius: 50%;
+    transition: all ease 0.3s;
+    -moz-transition: all ease 0.3s;
+    -webkit-transition: all ease 0.3s;
+    -o-transition: all ease 0.3s;
+    -ms-transition: all ease 0.3s;
+}
+
+.social i:hover {
+    color: #FFF;
+    text-decoration: none;
+    transition: all ease 0.3s;
+    -moz-transition: all ease 0.3s;
+    -webkit-transition: all ease 0.3s;
+    -o-transition: all ease 0.3s;
+    -ms-transition: all ease 0.3s;
+}
+
+.social .fa-facebook { /* round facebook icon*/
+    background: #4060A5;
+}
+
+.social .fa-twitter { /* round twitter icon*/
+    background: #00ABE3;
+}
+
+.social .fa-google-plus{ /* round google plus icon*/
+    background: #e64522;
+}
+
+.social .fa-github{ /* round github icon*/
+    background: #343434;
+}
+
+.social .fa-pinterest { /* round pinterest icon*/
+    background: #cb2027;
+}
+
+.social .fa-linkedin { /* round linkedin icon*/
+    background: #0094BC;
+}
+
+.social .fa-flickr { /* round flickr icon*/
+    background: #FF57AE;
+}
+
+.social .fa-instagram{ /* round instagram icon*/
+    background: #375989;
+}
+
+.social .fa-vimeo-square{ /* round vimeo square icon*/
+    background: #83DAEB;
+}
+
+.social .fa-stack-overflow{ /* round stack overflow icon*/
+    background: #FEA501;
+}
+
+.social .fa-dropbox{ /* round dropbox icon*/
+    background: #017FE5;
+}
+
+.social .fa-tumblr { /* round tumblr icon*/
+    background: #3a5876;
+}
+
+.social .fa-dribbble { /* round dribble icon*/
+    background: #F46899;
+}
+
+.social .fa-skype{ /* round skype icon*/
+    background: #00C6FF;
+}
+
+.social .fa-stack-exchange{ /* round stack exchange icon*/
+    background: #4D86C9;
+}
+
+.social .fa-youtube { /* round youtube icon*/
+    background: #FF1F25;
+}
+
+.social .fa-xing{ /* round xing icon*/
+    background: #005C5E;
+}
+
+.social .fa-rss { /* round rss icon*/
+    background: #e88845;
+}
+
+.social .fa-foursquare { /* round foursquare icon*/
+    background: #09B9E0;
+}
+
+.social .fa-youtube-play { /* round youtube play button icon*/
+    background: #DF192A;
+}
