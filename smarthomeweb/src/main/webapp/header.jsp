@@ -43,7 +43,7 @@
 		<ul class="nav navbar-nav">
 			<li><a href="index.jsp">Home</a></li>
 			<li><a href="DeviceManager.jsp">Device Manager</a></li>
-			<li class="active"><a href="Chart.jsp">Power Consumption</a></li>
+			<li class="active"><a href=PowerConsumption.jsp>Power Consumption</a></li>
 		</ul>
 		<%} %>
 		<ul class="nav navbar-nav navbar-right">
