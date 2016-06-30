@@ -1,7 +1,8 @@
 package Handler;
 import org.apache.catalina.startup.Tomcat;
 
-import Connector.HiveConnector;
+import Connector.*;
+import Controller.DeviceManager;
 
 public class Main {
 	
@@ -16,13 +17,14 @@ public class Main {
         String contextPath = "/";
         String appBase = ".";
         
-        // Get Data From Hive.
-        Main app = new Main();
+        //app.m_conn.CreateConnection();
         
-        app.m_conn.CreateConnection();
+        DeviceManager devicemng = new DeviceManager();
         
+        devicemng.GetListDevice();
+        devicemng.GetPowerConsumptionByDeviceType();
         
-        // Start Tomcat
+        //Start Tomcat
         Tomcat tomcat = new Tomcat();
         if(port != null)
         	tomcat.setPort(Integer.valueOf(8080));

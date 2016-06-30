@@ -2,49 +2,100 @@ package Controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
+import Connector.HiveConnector;
+import Connector.HiveProcedure;
 import Entity.DeviceInfo;
 
 public class DeviceManager {
-	public List<DeviceInfo> deviceList;
-	public Map<String, Double> powerConsumptionByDeviceType;
-	public Map<String, Double> powerConsumptionPerMonth;
-	public Map<String, Double> powerConsumptionPerDay;
+	
+	public HiveConnector		m_conn;
+	public HiveProcedure		m_procedure;
+	
+	public List<DeviceInfo> 	deviceList;
+	public static List<DeviceInfo> 	deviceListCpy;
+	public Map<String, Double> 	powerConsumptionByDeviceType;
+	public Map<String, Double> 	powerConsumptionPerMonth;
+	public Map<String, Double> 	powerConsumptionPerDay;
 	
 	public DeviceManager() {
 		deviceList = new ArrayList<DeviceInfo>();
 		powerConsumptionByDeviceType = new HashMap<String, Double>();
 		powerConsumptionPerMonth = new LinkedHashMap<String, Double>();
 		powerConsumptionPerDay= new LinkedHashMap<String, Double>();
+		
 		// TODO Auto-generated constructor stub
-			
+		try{
+			System.out.println("Start DeviceMng Service ...");
+			m_conn 			= new HiveConnector();
+			m_conn.CreateConnection();
+			m_procedure   	= new HiveProcedure();
+			m_procedure.sp_UseDataBase(m_conn);
+			System.out.println("Done Start DeviceMng");
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		this.GetListDevice();
+		
 	}
 	
-	public void GetListDevice(){
+	public List<DeviceInfo> GetListDevice(){
 		DeviceInfo device = new DeviceInfo("Device001", "Light", 10, "29/06/2016", "Living Room", "Light", "good");
-		DeviceInfo device1 = new DeviceInfo("Device001", "TV", 20, "29/06/2016", "Bed Room", "TV", "good");
-		DeviceInfo device2 = new DeviceInfo("Device001", "Air Conditioner", 10, "29/06/2016", "Living Room", "Air Conditioner", "bad");
-		DeviceInfo device3 = new DeviceInfo("Device001", "Washing Machine", 10, "29/06/2016", "Kitchen", "Washing Machine", "good");
-		DeviceInfo device4 = new DeviceInfo("Device001", "Fridge", 30, "29/06/2016", "Kitchen", "Fridge", "bad");
+		DeviceInfo device1 = new DeviceInfo("Device002", "TV", 20, "29/06/2016", "Bed Room", "TV", "good");
+		DeviceInfo device2 = new DeviceInfo("Device003", "Air Conditioner", 10, "29/06/2016", "Living Room", "Air Conditioner", "bad");
+		DeviceInfo device3 = new DeviceInfo("Device004", "Washing Machine", 10, "29/06/2016", "Kitchen", "Washing Machine", "good");
+		DeviceInfo device4 = new DeviceInfo("Device005", "Fridge", 30, "29/06/2016", "Kitchen", "Fridge", "bad");
 	
 		deviceList.add(device);
 		deviceList.add(device1);
 		deviceList.add(device2);
 		deviceList.add(device3);
 		deviceList.add(device4);
+		
+		deviceList 		= m_procedure.getListDeviceInfo(m_conn);
+		deviceListCpy 	= m_procedure.getListDeviceInfo(m_conn);
+		return deviceList;
 	}
 	
 	public void GetPowerConsumptionByDeviceType(){
 		//Get sum of device power consumption order device type
 		//query: Select DeviceType sum(PowerConsumption) from DeviceInfo group by DeviceType
-		powerConsumptionByDeviceType.put("Light", 2.0);
-		powerConsumptionByDeviceType.put("TV", 1.0);
-		powerConsumptionByDeviceType.put("Air Conditoner", 1.0);
-		powerConsumptionByDeviceType.put("Washing Machine", 1.0);
-		powerConsumptionByDeviceType.put("Fridge", 3.0);
+		
+		powerConsumptionByDeviceType.clear();
+		
+		double totalConsumsion = 0;
+		
+		for(DeviceInfo deviceInfor : deviceList){
+			System.out.println(deviceInfor.getDeviceId() + " " + deviceInfor.getDeviceName() + " " + deviceInfor.getPowerConsumption());
+			for(DeviceInfo deviceInfor2 : deviceList){
+				if(deviceInfor.getDeviceType().equals(deviceInfor2.getDeviceType())){
+					totalConsumsion += deviceInfor2.getPowerConsumption();
+				}
+			}
+			powerConsumptionByDeviceType.put(deviceInfor.getDeviceType(), totalConsumsion);
+			totalConsumsion = 0;	
+		}
+		
+		System.out.println("TRACK");
+		
+		Map<String, Double> u = powerConsumptionByDeviceType;	
+		Set keys = u.keySet();
+		for (Iterator i = keys.iterator(); i.hasNext();) {
+			String key = (String) i.next();
+		    Double value = (Double) u.get(key);
+			System.out.println(key + " " + value);
+		}
+//		powerConsumptionByDeviceType.put("Light", 2.0);
+//		powerConsumptionByDeviceType.put("TV", 1.0);
+//		powerConsumptionByDeviceType.put("Air Conditoner", 1.0);
+//		powerConsumptionByDeviceType.put("Washing Machine", 1.0);
+//		powerConsumptionByDeviceType.put("Fridge", 3.0);
 	}
 	
 	public void GetSumPowerConsumptionPerMonth(String year){

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="Entity.DeviceInfo"%>
-<%@ page import="Controller.DeviceManager" %>
+<%@ page import="Controller.*" %>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.Map"%>
